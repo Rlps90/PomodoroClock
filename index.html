@@ -14,14 +14,14 @@
     <h1>Pomológio</h1>
     <h3>Clique para começar</h3>
     <div id="relogio">
-        <div id=start><i class="fas fa-play"></i> Começar</div>
-        <div id="pause"><i class="fas fa-pause"></i> Pausar</div>
-        <div id="reset"><i class="fas fa-undo-alt"></i> Reset</div>
+        <button id="start" class="fas fa-play"></button>
+        <button id="pause" class="fas fa-pause"></button>
+        <button id="reset" class="fas fa-undo-alt"></button>
     </div>
     <div id="timer">
-            
-            <button onclick="incremento()"><i class="fas fa-plus"></i></button>
-            <button onclick="decremento()"><i class="fas fa-minus"></i></button>
+            <input type="number" id="numClock" value="30" max="60" min="5">
+            <button id="botMais" onclick="incremento()"><i class="fas fa-plus"></i></button>
+            <button id="botMenos" onclick="decremento()"><i class="fas fa-minus"></i></button>
     </div>
     <script src="clock.js"></script>
 </body>

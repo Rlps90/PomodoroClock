@@ -1,20 +1,25 @@
-function start() {
-    document.getElementById('start').onclick = setInterval(function () {
-        const diferenca = new Date(document.getElementById('timer')) - new Date()
-        
-    }, 1000)
-}
+document.getElementById("start").addEventListener("click", setInterval(() => {
+    tempoRestante--
+    tempoAtual = tempoRestante
+    alert(tempoAtual)
+    //let minRestante = Math.floor(tempoRestante / 60),
+    //    segRestante = tempoRestante - minRestante * 60
+
+}), 1000)
+
+
+function parar() {
 
 }
 
-function parar() {}
+function reset() {
 
-function reset() {}
-
-function incremento() {
-    document.getElementById('incrDecr').stepUp()
 }
 
-function decremento() {
-    document.getElementById('incrDecr').stepDown()
-}
+document.getElementById("botMais").addEventListener("click", function () {
+    document.getElementById('numClock').stepUp()
+})
+
+document.getElementById("botMenos").addEventListener("click", function () {
+    document.getElementById('numClock').stepDown()
+})
