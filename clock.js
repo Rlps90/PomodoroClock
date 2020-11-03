@@ -1,9 +1,21 @@
-document.getElementById("start").addEventListener("click", setInterval(() => {
-    tempoRestante--
-    tempoAtual = tempoRestante
-    alert(tempoAtual)
-    //let minRestante = Math.floor(tempoRestante / 60),
-    //    segRestante = tempoRestante - minRestante * 60
+document.getElementById("start").addEventListener("click", () => setInterval(() => {
+    let tempoAtual = document.getElementById("numClock").value * 60
+    if (tempoAtual > 0) {
+        let minRestante = Math.floor(tempoAtual / 60),
+            segRestante = tempoAtual - minRestante * 60
+
+        tempoAtual--
+        function duasCasas(num, casas) {
+            return num.toString().padStart(casas, 0)
+        }
+
+        document.getElementById("timer").innerHTML = duasCasas(minRestante, 2) + ":" + duasCasas(segRestante, 2)
+
+
+    } else {
+
+    }
+
 
 }), 1000)
 
