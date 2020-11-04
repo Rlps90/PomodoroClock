@@ -1,10 +1,15 @@
+var tempoAtual = document.getElementById("numClock").value * 60
+
+//erro: tempo muito rápido
+
 document.getElementById("start").addEventListener("click", () => setInterval(() => {
-    let tempoAtual = document.getElementById("numClock").value * 60
+    
     if (tempoAtual > 0) {
         let minRestante = Math.floor(tempoAtual / 60),
-            segRestante = tempoAtual - minRestante * 60
+            segRestante = tempoAtual - minRestante
 
         tempoAtual--
+
         function duasCasas(num, casas) {
             return num.toString().padStart(casas, 0)
         }
@@ -16,11 +21,10 @@ document.getElementById("start").addEventListener("click", () => setInterval(() 
 
     }
 
-
 }), 1000)
 
 
-function parar() {
+function pausar() {
 
 }
 
@@ -35,3 +39,5 @@ document.getElementById("botMais").addEventListener("click", function () {
 document.getElementById("botMenos").addEventListener("click", function () {
     document.getElementById('numClock').stepDown()
 })
+
+console.log(document.getElementById("numClock"))
