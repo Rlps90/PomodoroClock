@@ -3,7 +3,7 @@ var tempoAtual = document.getElementById("numClock").value * 60
 //erro: tempo muito rápido
 
 document.getElementById("start").addEventListener("click", () => setInterval(() => {
-    
+
     if (tempoAtual > 0) {
         let minRestante = Math.floor(tempoAtual / 60),
             segRestante = tempoAtual - minRestante
@@ -39,5 +39,3 @@ document.getElementById("botMais").addEventListener("click", function () {
 document.getElementById("botMenos").addEventListener("click", function () {
     document.getElementById('numClock').stepDown()
 })
-
-console.log(document.getElementById("numClock"))
