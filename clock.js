@@ -1,10 +1,7 @@
 var tempoAtual = document.getElementById("numClock").value * 60
 
-//erro: tempo muito rápido
-
-document.getElementById("start").addEventListener("click", () => setInterval(() => {
-
-    if (tempoAtual > 0) {
+if (tempoAtual > 0) {
+    document.getElementById("start").addEventListener("click", () => setInterval(() => {
 
         let minRestante = Math.floor(tempoAtual / 60)
         let segRestante = tempoAtual - minRestante * 60
@@ -12,18 +9,14 @@ document.getElementById("start").addEventListener("click", () => setInterval(() 
         tempoAtual--
 
         document.getElementById("timer").innerHTML = duasCasas(minRestante, 2) + ":" + duasCasas(segRestante, 2)
-    } else{
-        document.getElementById("timer").innerHTML = "Hora do descanço!"
-    }
-}), 1000)
+    }, 1000))
+} else if (tempoAtual === 0) {
+    document.getElementById("timer").innerHTML = "Hora do descanço!"
+}
 
 function duasCasas(num, casas) {
     return num.toString().padStart(casas, 0)
 }
-
-
-
-
 
 function pausar() {
 
