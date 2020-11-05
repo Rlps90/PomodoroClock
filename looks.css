@@ -5,6 +5,12 @@ body {
     text-align: center;
 }
 
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 h1 {
     font-size: 30pt;
     margin-bottom: 0%;
