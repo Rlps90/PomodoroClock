@@ -1,9 +1,10 @@
 var tempoAtual = document.getElementById("numClock").value * 60
 var minutos = parseInt(document.getElementById("numClock").value, 10)
+let isPaused = true
 
 //Início do relógio Pomodoro ao clicar start
 if (tempoAtual > 0) {
-    document.getElementById("start").addEventListener("click", () => setInterval(() => {
+    document.getElementById("start").addEventListener("click", () => myVar = setInterval(() => {
 
         let minRestante = Math.floor(tempoAtual / 60)
         let segRestante = tempoAtual - minRestante * 60
@@ -12,13 +13,13 @@ if (tempoAtual > 0) {
 
         document.getElementById("timer").innerHTML = duasCasas(minRestante, 2) + ":" + duasCasas(segRestante, 2)
     }, 1000))
-} else if (tempoAtual === 0 && document.getElementById("numClock").clicked == true) {
+} else if (tempoAtual === 0 && document.getElementById("start").clicked == true) {
     document.getElementById("timer").innerHTML = "Hora do descanço!"
 }
 
-function pausar() {
-
-}
+document.getElementById("pause").addEventListener("click", () => {
+    clearInterval(myVar)
+})
 
 function reset() {
 
