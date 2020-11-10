@@ -1,28 +1,36 @@
-let tempoAtual = document.getElementById("numClock").value * 60
-let minutos = parseInt(document.getElementById("numClock").value, 10)
+let segundos = 0
+let tempoRestante = 0
+let cronometro = 0
+let isPaused = true
+let isPlaying = true
 const botaoIniciar = document.getElementById("start")
 const botaoPausar = document.getElementById("pause")
 const botaoReset = document.getElementById("reset")
-let isPaused = true
+const tempoTrab = document.getElementById("tempoTrab")
+const trabMais = document.getElementById("botMais")
+const trabMenos = document.getElementById("botMenos")
+
+
 
 //Início do relógio Pomodoro ao clicar start
-if (tempoAtual > 0) {
-    botaoIniciar.addEventListener("click", function play() {
+function timer() {
+    segundos--
+    if (tempoTrab > 0) {
+        botaoIniciar.addEventListener("click", function play() {
             myVar = setInterval(() => {
-
-                let minRestante = Math.floor(tempoAtual / 60)
-                let segRestante = tempoAtual - minRestante * 60
-
-                tempoAtual--
+                segundos = tempoTrab.textContent * 60
+                let minRestante = Math.floor(segundos / 60)
+                let segRestante = segundos - minRestante * 60
 
                 document.getElementById("timer").innerHTML = duasCasas(minRestante, 2) + ":" + duasCasas(segRestante, 2)
             }, 1000)
-    })
-} else if (tempoAtual === 0 && document.getElementById("start").clicked == true) {
-    document.getElementById("timer").innerHTML = "Hora do descanço!"
+        })
+    } else if (tempoTrab === 0 && document.getElementById("start").clicked == true) {
+        document.getElementById("timer").innerHTML = "Hora do descanço!"
+    }
 }
 
-if (isPaused){
+if (isPaused) {
     botaoPausar.addEventListener("click", () => {
         clearInterval(myVar)
         isPaused = false
@@ -39,21 +47,34 @@ function reset() {
 
 }
 
-//formatação para os números de 0 a 9 aparecerem com 2 casas
-function duasCasas(num, casas) {
-    return num.toString().padStart(casas, 0)
+function iniciarTimer() {
+    if (tempoRestante != 0) {
+        segundos = tempoRestante
+    } else {
+        segundos = tempoTrab.textContent * 60
+    }
+    cronometro = setInterval(timer, 1000)
 }
 
 //função de incremento do botão +
-document.getElementById("botMais").addEventListener("click", function () {
-    minutos++
-    document.getElementById("numClock").value = minutos
+trabMais.addEventListener("click", () => {
+    let x = parseInt(tempoTrab.textContent)
+    if (x < 60) {
+        tempoTrab.textContent = x + 5
+    }
 })
 
 //Não estão alterando o valor inicial do input
 
-//função de incremento do botão -
-document.getElementById("botMenos").addEventListener("click", function () {
-    minutos--
-    document.getElementById("numClock").value = minutos
+//função de decremento do botão -
+trabMenos.addEventListener("click", () => {
+    let x = parseInt(tempoTrab.textContent)
+    if (x > 5) {
+        tempoTrab.textContent = x - 5
+    }
 })
+
+//formatação para os números de 0 a 9 aparecerem com 2 casas
+function duasCasas(num, casas) {
+    return num.toString().padStart(casas, 0)
+}
