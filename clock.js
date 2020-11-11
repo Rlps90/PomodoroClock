@@ -10,6 +10,7 @@ const botaoReset = document.getElementById("reset")
 const tempoTrab = document.getElementById("tempoTrab")
 const trabMais = document.getElementById("botMais")
 const trabMenos = document.getElementById("botMenos")
+let relogio = document.getElementById("timer")
 
 
 
@@ -17,17 +18,17 @@ const trabMenos = document.getElementById("botMenos")
 function timer() {
     segundos--
     if (tempoTrab > 0) {
-        botaoIniciar.addEventListener("click", function play() {
+        botaoIniciar.addEventListener("click", () => {
             myVar = setInterval(() => {
-                segundos = tempoTrab.textContent * 60
+                segundos = tempoTrab.value * 60
                 let minRestante = Math.floor(segundos / 60)
                 let segRestante = segundos - minRestante * 60
 
-                document.getElementById("timer").innerHTML = duasCasas(minRestante, 2) + ":" + duasCasas(segRestante, 2)
+                relogio.innerHTML = duasCasas(minRestante, 2) + ":" + duasCasas(segRestante, 2)
             }, 1000)
         })
     } else if (tempoTrab === 0 && document.getElementById("start").clicked == true) {
-        document.getElementById("timer").innerHTML = "Hora do descanço!"
+        relogio.innerHTML = "Hora do descanso!"
     }
 }
 
@@ -38,7 +39,7 @@ if (isPaused) {
     })
 } else {
     botaoPausar.addEventListener("click", () => {
-        play()
+        timer()
         isPaused = true
     })
 }
@@ -52,7 +53,7 @@ function iniciarTimer() {
     if (tempoRestante != 0) {
         segundos = tempoRestante
     } else {
-        segundos = tempoTrab.textContent * 60
+        segundos = tempoTrab.value * 60
     }
     cronometro = setInterval(timer, 1000)
 }
