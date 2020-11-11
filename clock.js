@@ -3,6 +3,7 @@ let tempoRestante = 0
 let cronometro = 0
 let isPaused = true
 let isPlaying = true
+let myVar
 const botaoIniciar = document.getElementById("start")
 const botaoPausar = document.getElementById("pause")
 const botaoReset = document.getElementById("reset")
@@ -58,9 +59,9 @@ function iniciarTimer() {
 
 //função de incremento do botão +
 trabMais.addEventListener("click", () => {
-    let x = parseInt(tempoTrab.textContent)
+    let x = parseInt(tempoTrab.value)
     if (x < 60) {
-        tempoTrab.textContent = x + 5
+        tempoTrab.value = x + 5
     }
 })
 
@@ -68,9 +69,9 @@ trabMais.addEventListener("click", () => {
 
 //função de decremento do botão -
 trabMenos.addEventListener("click", () => {
-    let x = parseInt(tempoTrab.textContent)
+    let x = parseInt(tempoTrab.value)
     if (x > 5) {
-        tempoTrab.textContent = x - 5
+        tempoTrab.value = x - 5
     }
 })
 
